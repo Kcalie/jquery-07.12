@@ -30,6 +30,42 @@ $(document).ready(function(){
     })
 });
 
+
+$('#btn_ajax').click(function(){
+    //On charge notre fichier ajax et on l'insère dans content ajax
+    $('#content_ajax').load('assets/ajax/content.html');
+});
+
+// drag & drop
+$('.drag').draggable();
+// datePicker
+let dateFormat = 'dd/mm/yy',
+from = $('#datedebut').datepicker({
+    defaultDate: '+1w',
+    changeMonth: true,
+    numberOfMonths: 2
+}).on("change",function(){
+    from.datepicker("option","minDate",getDate(this));
+}),
+to = $('#datefin').datepicker({
+    defaultDate: '+1w',
+    changeMonth: true,
+    numberOfMonths: 2
+}).on("change",function(){
+    from.datepicker("option","maxDate",getDate(this));
+});
+function getDate(element){
+    let date;
+    try{
+        date = $.datepicker.parseDate(dateFormat,element.value);
+    } catch(error){
+        date = null;
+    }
+    return date;
+}
+$('div').css('border','2px solid green');
+
+
 /*$(document).bind('mousemove',function(e){
     $('#souris').text(e.pageX+","+e.pageY);
     $('#img_souri').css('top' , e.pageY);

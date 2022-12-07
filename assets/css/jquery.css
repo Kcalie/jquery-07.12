@@ -14,7 +14,11 @@ img{
     width: 500px;
     height: auto;
 }
-
+.drag{
+    border: 1px dotted gray;
+    width: 500px;
+    height: 500px;
+}
 /* image a la place de la souris
 #img_souri{
     position: absolute;
